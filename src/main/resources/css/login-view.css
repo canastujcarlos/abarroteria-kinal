@@ -1,0 +1,11 @@
+/* 1. Fondo de toda la ventana (AnchorPane) */
+.root {
+    -fx-background-color: black;
+}
+
+/* 2. Estilo para la tarjeta central del login (Asegúrate de que tenga la Style Class: mainFxmlClass) */
+.mainFxmlClass {
+    -fx-background-color: white;
+    -fx-background-radius: 0 0 20 20; /* Bordes redondeados modernos */
+    -fx-padding: 20;
+}

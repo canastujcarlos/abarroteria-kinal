@@ -1,0 +1,21 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 14/08/2026, 16:25:48
+    Author     : informatica
+*/
+
+.btn-primary{
+    -fx-background-color: rgb(108,134,218);
+}
+
+.btn-secundary{
+    -fx-background-color: #2ecc71; /* Color verde */
+    -fx-text-fill: white;          /* Texto en blanco para que resalte */
+}
+
+.btn-third{
+    
+}
