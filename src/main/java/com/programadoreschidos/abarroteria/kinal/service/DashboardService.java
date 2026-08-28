@@ -4,16 +4,20 @@
  */
 package main.java.com.programadoreschidos.abarroteria.kinal.service;
 
-/**
- *
- * @author informatica
- */
+import main.java.com.programadoreschidos.abarroteria.kinal.repository.ProductoRepository;
+
+
 
    public class DashboardService {
-
+    private final ProductoRepository productoRepository;
+    
     // Sin repositorio, puedes dejarlo vacío o con métodos de prueba
-    public DashboardService() {
+
+    public DashboardService(ProductoRepository productoRepository) {
+        this.productoRepository = productoRepository;
     }
+   
+    public ObservableList<Producto>
 
     public String obtenerMensajeBienvenida() {
         return "¡Bienvenido al sistema de la Abarrotería Kinal!";

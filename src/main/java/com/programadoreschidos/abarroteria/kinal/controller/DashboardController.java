@@ -14,11 +14,7 @@ import javafx.scene.control.Label;
 import main.java.com.programadoreschidos.abarroteria.kinal.service.DashboardService;
 import main.java.com.programadoreschidos.abarroteria.kinal.util.SceneManager;
 
-/**
- * FXML Controller class
- *
- * @author informatica
- */
+
 public class DashboardController {
 
     private final DashboardService dashboardService;

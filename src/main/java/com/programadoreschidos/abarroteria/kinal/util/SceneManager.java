@@ -16,13 +16,14 @@ import main.java.com.programadoreschidos.abarroteria.kinal.service.DashboardServ
 public class SceneManager {
     
     private final Stage stage;
-
+    private final String FXML_PATH = "/main/resources/view/";
+    
     public SceneManager(Stage stage) {
         this.stage = stage;
     }
     
     public void showLoginView() throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/login-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH+"login-view.fxml"));
         
         loader.setControllerFactory(
                 
@@ -48,7 +49,7 @@ public class SceneManager {
     }
     //dashboard stage
     public void showDashboardView() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/resources/view/dashboard-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH+"/dashboard-view.fxml"));
         
         loader.setControllerFactory(clazz -> {
             if (clazz == DashboardController.class) {
@@ -66,8 +67,10 @@ public class SceneManager {
         Parent root = loader.load();
         Scene scene = new Scene(root, 900, 600);
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
+    
     //alerta modal reutilizable
     public void showAlertInfo(String head, String title, String content, AlertType type){
         Alert alert = new Alert(type);
