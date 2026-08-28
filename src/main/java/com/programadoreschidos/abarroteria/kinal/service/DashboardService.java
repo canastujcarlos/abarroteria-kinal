@@ -4,6 +4,8 @@
  */
 package main.java.com.programadoreschidos.abarroteria.kinal.service;
 
+import javafx.collections.ObservableList;
+import main.java.com.programadoreschidos.abarroteria.kinal.model.Producto;
 import main.java.com.programadoreschidos.abarroteria.kinal.repository.ProductoRepository;
 
 
@@ -17,9 +19,19 @@ import main.java.com.programadoreschidos.abarroteria.kinal.repository.ProductoRe
         this.productoRepository = productoRepository;
     }
    
-    public ObservableList<Producto>
+    public ObservableList<Producto> findProducto(){
+    if(productoRepository.findAll()== null){
+        throw new RuntimeException("Sin productos");
+      }else{
+        return productoRepository.findAll(); 
+      }
+    }
 
     public String obtenerMensajeBienvenida() {
         return "¡Bienvenido al sistema de la Abarrotería Kinal!";
     }
+    
+    public void eliminarProducto(String idProducto) {
+    productoRepository.eliminar(idProducto); // O el método que tengas en tu repositorio para borrar en la BD
+}
 }

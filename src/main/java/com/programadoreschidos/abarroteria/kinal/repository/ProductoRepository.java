@@ -10,26 +10,56 @@ import main.java.com.programadoreschidos.abarroteria.kinal.model.Producto;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-/**
- *
- * @author informatica
- */
+import javafx.collections.FXCollections;
 public class ProductoRepository {
-    
+
     public ObservableList<Producto> findAll(){
-     String sql = "select * from productos";
-     try(PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql))
-    ResulSet rs = pstm.executeQuery();
-    ObservableList<Producto> Lista = FXCollections.ObservableList
-         if(rs.next()){
-            lista.add(new Producto(
-            rs.getString("id_producto"),
-            rs.getString("nombre_producto"),
-            rs.getInt(),
-            
-            )
-         }
-         }catch(SQLException e){
-        
+
+        String sql = "select * from productos;";
+
+        try(PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareCall(sql);){
+
+            ResultSet rs = pstm.executeQuery();
+
+            ObservableList<Producto> lista = FXCollections.observableArrayList();
+
+            while(rs.next()){
+
+                lista.add(new Producto(
+
+                rs.getString("id_producto"),
+
+                rs.getString("nombre_producto"),
+
+                rs.getInt("stock"),
+
+                rs.getBigDecimal("precio")        
+
+                ));
+
+            }
+
+            return lista;
+
+        }catch(SQLException e){
+
+            throw new RuntimeException("Error en la consulta.");
+
+        }
+
     }
+    
+    public void eliminar(String idProducto) {
+    String sql = "DELETE FROM productos WHERE id_producto = ?";
+    
+    try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
+        pstm.setString(1, idProducto);
+        pstm.executeUpdate();
+    } catch (SQLException e) {
+        throw new RuntimeException("Error al eliminar el producto de la base de datos: " + e.getMessage());
+    }
+ }
+
 }
+
+ 
