@@ -48,6 +48,17 @@ public class ProductoRepository {
         }
 
     }
+    
+    public void eliminar(String idProducto) {
+    String sql = "DELETE FROM productos WHERE id_producto = ?";
+    
+    try (PreparedStatement pstm = DataBaseConnection.getDataBaseConnection().prepareStatement(sql)) {
+        pstm.setString(1, idProducto);
+        pstm.executeUpdate();
+    } catch (SQLException e) {
+        throw new RuntimeException("Error al eliminar el producto de la base de datos: " + e.getMessage());
+    }
+ }
 
 }
 

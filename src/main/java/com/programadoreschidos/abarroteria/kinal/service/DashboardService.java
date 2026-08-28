@@ -30,4 +30,8 @@ import main.java.com.programadoreschidos.abarroteria.kinal.repository.ProductoRe
     public String obtenerMensajeBienvenida() {
         return "¡Bienvenido al sistema de la Abarrotería Kinal!";
     }
+    
+    public void eliminarProducto(String idProducto) {
+    productoRepository.eliminar(idProducto); // O el método que tengas en tu repositorio para borrar en la BD
+}
 }
